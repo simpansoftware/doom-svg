@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style="position: fixed; top: 0; left: 0;">
+<style>
+	html {
+	        height: 100vh;
+	}
+	a {
+		color: #867ae0;
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+	body {
+		color: #ccc;
+		font-family: Monospace;
+		font-size: 16px;
+		background-color: black;
+		margin: 0;
+		display: flex;
+		justify-content: center;
+	}
+	canvas {
+		overflow: auto;
+		width: 100vw;
+	}
+	@media screen and (min-width: 576px) {
+		canvas {
+			height: 100vh;
+			height: 100dvh;
+		}
+	}
+	@keyframes page-loader { 
+		0% {transform: rotate(0deg); } 
+		100% { transform: rotate(360deg);}
+	}
+	.info-overlay {
+		text-align: center;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+		width: 200px;
+		height: 200px;
+		display: none;
+	}
+	#spinner {
+		content: "";
+		border-radius: 50%;
+		width: 48px;
+		height: 48px;
+		position: absolute;
+		margin: auto;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		border-top: 2px solid #222;
+		border-right: 2px solid #222;
+		border-bottom: 2px solid #222;
+		border-left: 2px solid #867ae0;
+		transform: translateZ(0);
+		animation: page-loader 1.1s infinite linear;
+	}
+</style>
+    <foreignObject x="0" y="0" width="100%" height="100%">
+		<head></head>
+        <body xmlns="http://www.w3.org/1999/xhtml">
+			
+            <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+            <div class="info-overlay" id="loading">
+                <div id="spinner"></div>
+                <div id="status">Downloading...</div>
+                <div>
+                    <progress value="0" max="100" id="progress" hidden="hidden"></progress>  
+                </div>
+            </div>
+            <div class="info-overlay" id="select-version">
+                <a href="#" id="load">Load</a><br/>
+                ~11mb
+            </div>
+			<script><![CDATA[var loadScript=(e,t)=>{e.preventDefault(),document.getElementById("select-version").style.display="none",document.getElementById("loading").style.display="block";var n=document.createElementNS("http://www.w3.org/1999/xhtml", "script");n.setAttribute("src",t),document.getElementById("canvas").parentElement.appendChild(n)};document.getElementById("select-version").style.display="block",document.getElementById("load").addEventListener("click",e=>loadScript(e,"index.js"));var statusElement=document.getElementById("status"),progressElement=document.getElementById("progress"),spinnerElement=document.getElementById("spinner"),Module={preRun:[],postRun:[],print:function(e){arguments.length>1&&(e=Array.prototype.slice.call(arguments).join(" ")),console.log(e)},canvas:document.getElementById("canvas"),setStatus:e=>{if(Module.setStatus.last||(Module.setStatus.last={time:Date.now(),text:""}),e!==Module.setStatus.last.text){var t=e.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/),n=Date.now();t&&n-Module.setStatus.last.time<30||(Module.setStatus.last.time=n,Module.setStatus.last.text=e,t?(e=t[1],progressElement.value=100*parseInt(t[2]),progressElement.max=100*parseInt(t[4]),progressElement.hidden=!1,spinnerElement.hidden=!1):(progressElement.value=null,progressElement.max=null,progressElement.hidden=!0,e||(spinnerElement.hidden=!0,document.getElementById("loading").style.display="none")),statusElement.innerHTML=e)}},totalDependencies:0,monitorRunDependencies:e=>{Module.totalDependencies=Math.max(Module.totalDependencies,e),Module.setStatus(e?"preparing... ("+(Module.totalDependencies-e)+"/"+Module.totalDependencies+")":"all downloads complete.")}};Module.setStatus("downloading..."),window.onerror=()=>{Module.setStatus("Exception thrown, see JavaScript console"),document.getElementById("loading").style.display="block",spinnerElement.style.display="none",Module.setStatus=e=>{e&&console.error("[post-exception status] "+e)}};]]></script>
+			<script><![CDATA[!function(){var e={KeyW:{key:"ArrowUp",code:"ArrowUp",keyCode:38},KeyA:{key:"ArrowLeft",code:"ArrowLeft",keyCode:37},KeyS:{key:"ArrowDown",code:"ArrowDown",keyCode:40},KeyD:{key:"ArrowRight",code:"ArrowRight",keyCode:39}};function o(e,o){var d=new KeyboardEvent(e,{key:o.key,code:o.code,keyCode:o.keyCode,which:o.keyCode,bubbles:!0,cancelable:!0});Object.defineProperty(d,"keyCode",{value:o.keyCode}),Object.defineProperty(d,"which",{value:o.keyCode}),(window.Module&&window.Module.canvas?window.Module.canvas:window).dispatchEvent(d)}window.addEventListener("keydown",function(d){var n=e[d.code];n&&o("keydown",n)}),window.addEventListener("keyup",function(d){var n=e[d.code];n&&o("keyup",n)})}(); // stole this from somewhere]]></script>
+		</body>
+    </foreignObject>
+</svg>
