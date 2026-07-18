@@ -22,7 +22,7 @@ This means that you can just open doom.svg in a browser while offline, and it wo
 - Space to interact with doors etc
 - CTRL or Left Mouse button to shoot (note: mouse movement doesnt work due to my emscripten port lacking it) 
 ## What did I learn?
-I learnt the following
+I learnt the following:
 - That foreignObject exists in SVGs and is basically just HTML but worse if you style it correctly
 - That Chris Dalke made a DOOM port for SVGs before in a different way
 - How to bundle JS in SVGs
