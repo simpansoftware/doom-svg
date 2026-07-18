@@ -15,7 +15,7 @@ Module.locateFile = function(path, prefix) {{
         return 'data:application/wasm;base64,{wasm}';
     }}
     return (prefix || '') + path;
-}};""" # override coded by claude, as im terrible at js
+}};""" # override coded partly by claude, as im terrible at js
 
 combined = emscriptenOverride + "\n" + js
 inject = f"<script><![CDATA[{combined}]]></script>"

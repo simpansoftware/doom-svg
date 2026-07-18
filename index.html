@@ -2,11 +2,22 @@
 <html>
 	<head>
 		<title>DOOM-SVG</title>
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<h1></h1>
-		<object data="doom.svg" type="image/svg+xml">
+		<h1>DOOM-SVG</h1>
+		<object id="doomsvg" data="doom.svg" type="image/svg+xml">
 			Sorry, your browser doesnt support SVGs or the object element
 		</object>
+		<script>
+			const doomobject = document.getElementById("doomsvg")
+			doomobject.addEventListener("load", () => {
+				doomobject.focus();
+				const doc = doomobject.contentDocument;
+				const canvas = doc.getElementById("canvas");
+				canvas.tabIndex = 0;
+				canvas.focus();
+			})
+		</script>
 	</body>
 </html>
