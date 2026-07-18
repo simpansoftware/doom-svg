@@ -1,9 +1,15 @@
 # DOOM-SVG
-It's DOOM, ported to a SVG using Emscripten.
+It's DOOM, ported to a SVG using Emscripten.<br>
+## Compatibility
+### Tested
+Chromium
+Firefox
+### Untested
+Safari (I dont own a mac)
 ## How do I run this?
 - Running precompiled
     - Go to https://simpansoftware.cc/doom-svg/doom.svg on a pc via a web browser, and that's DOOM!
-    - Alternatively open doom.svg from this repo.
+    - Alternatively download doom.svg from this repo and open it using your web browser of choice.
 - Compiling and then running
     - Requirements: Python
     - Run the following 
